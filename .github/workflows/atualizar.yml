@@ -1,0 +1,73 @@
+name: Atualizar e publicar o painel
+
+on:
+  schedule:
+    - cron: "17 9 * * 1,4"   # segundas e quintas, 6h17 de Brasília
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "dados/tce-mg/**"
+      - "painel/**"
+      - "coleta/**"
+      - "site/**"
+      - "config.json"
+      - ".github/workflows/atualizar.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: painel
+  cancel-in-progress: false
+
+jobs:
+  painel:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publicar.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Coletar relatórios do Siconfi
+        run: python3 coleta/siconfi.py || echo "::warning::Coleta do Siconfi falhou; o painel será gerado com os dados já armazenados."
+
+      - name: Testar o acesso ao portal de dados abertos do TCE-MG
+        run: |
+          http=$(curl -sS -m 30 -o /dev/null -w '%{http_code}' https://dadosabertos.tce.mg.gov.br/ || true)
+          ok=false; case "$http" in 2*|3*) ok=true;; esac
+          printf '{"data":"%s","http":"%s","acessivel":%s}\n' "$(date -u +%FT%TZ)" "${http:-000}" "$ok" > dados/tce-mg/.sonda.json
+          cat dados/tce-mg/.sonda.json
+
+      - name: Gerar o painel
+        run: python3 -m painel.gerar
+
+      - name: Testes
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Gravar os dados atualizados no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados site/dados
+          if git diff --cached --quiet -- dados/siconfi dados/tce-mg ':!dados/tce-mg/.sonda.json'; then
+            git reset -q
+            echo "Sem dados novos."
+          else
+            git commit -m "Atualiza dados do painel"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: publicar
+        uses: actions/deploy-pages@v4

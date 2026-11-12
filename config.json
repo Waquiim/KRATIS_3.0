@@ -1,0 +1,14 @@
+{
+  "municipio": "Viçosa",
+  "uf": "MG",
+  "cod_ibge": 3171303,
+  "exercicios_comparados": 3,
+  "siconfi": {
+    "base_url": "https://apidatalake.tesouro.gov.br/ords/siconfi/tt",
+    "poderes_rgf": ["E", "L"]
+  },
+  "tce_mg": {
+    "portal": "https://dadosabertos.tce.mg.gov.br/",
+    "pasta": "dados/tce-mg"
+  }
+}

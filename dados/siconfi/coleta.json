@@ -1,0 +1,188 @@
+{
+ "coletado_em": "2026-11-12T20:19:47+00:00",
+ "exercicio_corrente": 2026,
+ "exercicios": [
+  2023,
+  2024,
+  2025,
+  2026
+ ],
+ "arquivos": [
+  {
+   "arquivo": "dados/siconfi/rreo/2023-B1.json",
+   "linhas": 2083
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2023-B2.json",
+   "linhas": 2085
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2023-B3.json",
+   "linhas": 2160
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2023-B4.json",
+   "linhas": 2147
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2023-B5.json",
+   "linhas": 2160
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2023-B6.json",
+   "linhas": 2242
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2023-Q1-E.json",
+   "linhas": 218
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2023-Q2-E.json",
+   "linhas": 243
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2023-Q3-E.json",
+   "linhas": 258
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2023-Q1-L.json",
+   "linhas": 101
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2023-Q2-L.json",
+   "linhas": 101
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2023-Q3-L.json",
+   "linhas": 129
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2024-B1.json",
+   "linhas": 2211
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2024-B2.json",
+   "linhas": 1977
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2024-B3.json",
+   "linhas": 2253
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2024-B4.json",
+   "linhas": 2003
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2024-B5.json",
+   "linhas": 2060
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2024-B6.json",
+   "linhas": 2249
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2024-Q1-E.json",
+   "linhas": 225
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2024-Q2-E.json",
+   "linhas": 265
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2024-Q3-E.json",
+   "linhas": 421
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2024-Q1-L.json",
+   "linhas": 99
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2024-Q2-L.json",
+   "linhas": 99
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2024-Q3-L.json",
+   "linhas": 128
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2025-B1.json",
+   "linhas": 2198
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2025-B2.json",
+   "linhas": 2243
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2025-B3.json",
+   "linhas": 2253
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2025-B4.json",
+   "linhas": 2257
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2025-B5.json",
+   "linhas": 2264
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2025-B6.json",
+   "linhas": 2379
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2025-Q1-E.json",
+   "linhas": 244
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2025-Q2-E.json",
+   "linhas": 274
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2025-Q3-E.json",
+   "linhas": 458
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2025-Q1-L.json",
+   "linhas": 101
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2025-Q2-L.json",
+   "linhas": 102
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2025-Q3-L.json",
+   "linhas": 128
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2026-B1.json",
+   "linhas": 2233
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2026-B2.json",
+   "linhas": 2246
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2026-B3.json",
+   "linhas": 2272
+  },
+  {
+   "arquivo": "dados/siconfi/rreo/2026-B4.json",
+   "linhas": 2242
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2026-Q1-E.json",
+   "linhas": 243
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2026-Q2-E.json",
+   "linhas": 271
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2026-Q1-L.json",
+   "linhas": 100
+  },
+  {
+   "arquivo": "dados/siconfi/rgf/2026-Q2-L.json",
+   "linhas": 102
+  }
+ ]
+}
