@@ -30,7 +30,10 @@ jobs:
       name: github-pages
       url: ${{ steps.publicar.outputs.page_url }}
     steps:
+      # usa sempre a ponta do ramo, para que uma reexecução não trabalhe sobre código antigo
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
         with:
@@ -52,22 +55,29 @@ jobs:
       - name: Testes
         run: python3 -m unittest discover -s tests -v
 
-      - name: Gravar os dados atualizados no repositório
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados site/dados
-          if git diff --cached --quiet -- dados/siconfi dados/tce-mg ':!dados/tce-mg/.sonda.json'; then
-            git reset -q
-            echo "Sem dados novos."
-          else
-            git commit -m "Atualiza dados do painel"
-            git push
-          fi
-
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
       - id: publicar
         uses: actions/deploy-pages@v4
+
+      # Fica por último e nunca derruba a execução: o painel publicado não depende desta gravação.
+      - name: Gravar os dados atualizados no repositório
+        if: github.ref_name == 'main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados site/dados
+          # a data da coleta e o teste de acesso mudam a cada execução; só grava se houver dado novo
+          if git diff --cached --quiet -- dados/siconfi dados/tce-mg ':!dados/siconfi/coleta.json' ':!dados/tce-mg/.sonda.json'; then
+            echo "Sem dados novos."
+            exit 0
+          fi
+          git commit -q -m "Atualiza dados do painel"
+          if git pull -q --rebase origin main && git push -q origin HEAD:main; then
+            echo "Dados gravados no repositório."
+          else
+            git rebase --abort 2>/dev/null || true
+            echo "::warning::Não foi possível gravar os dados no repositório nesta execução; o painel foi publicado normalmente e a gravação será refeita na próxima."
+          fi
